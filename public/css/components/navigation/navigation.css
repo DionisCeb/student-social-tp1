@@ -1,0 +1,39 @@
+:root {
+    --nav-links-color: white;
+    --transition-nav: 1s;
+}
+
+a {
+    text-decoration: none;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+}
+
+.nav-logo {
+    font-size: 30px;
+    color: var(--nav-links-color);
+    transition: var(--transition-nav);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a{
+    color: var(--nav-links-color);
+    font-size: 24px;
+    transition: var(--transition-nav);
+}
+
+
+
+.nav-logo:hover,
+.nav-links a:hover {
+    scale: 0.9;
+    color: rgb(238, 166, 143);
+}

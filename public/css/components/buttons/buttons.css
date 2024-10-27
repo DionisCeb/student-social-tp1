@@ -1,0 +1,28 @@
+:root {
+    --general-btn-bg: linear-gradient(90deg, #164a99 0%, #b3758c 100%);
+    --general-btn-color: white;
+    --btn-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --scail-main: 0.9;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 20px;
+    background: var(--general-btn-bg);
+    color: var(--general-btn-color);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 1s;
+    box-shadow: var(--btn-shadow);
+}
+
+.btn:hover {
+    scale: 0.9;
+    color: rgb(255, 255, 255);
+}

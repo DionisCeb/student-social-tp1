@@ -1,0 +1,4 @@
+@import url(utils/utils.css);
+body {
+    background: linear-gradient(to right, #98bfb8, #41849f);
+}
