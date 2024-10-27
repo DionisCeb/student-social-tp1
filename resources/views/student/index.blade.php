@@ -1,41 +1,37 @@
 @extends('layouts.app')
-@section('title', 'Students Show')
+@section('title', 'Students List')
 @section('content')
 
 <div class="container">
-    Student-List
+    <header class="page-title"><h1>Student-List</h1></header>
 
-    <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Adresse</th>
-                    <th>Téléphone</th>
-                    <th>Email</th>
-                    <th>Date de Naissance</th>
-                    <th>Ville</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($etudiants as $etudiant)
-                    <tr>
-                        <td>{{ $etudiant->id }}</td>
-                        <td>{{ $etudiant->nom }}</td>
-                        <td>{{ $etudiant->adresse }}</td>
-                        <td>{{ $etudiant->telephone }}</td>
-                        <td>{{ $etudiant->email }}</td>
-                        <td>{{ $etudiant->date_naissance }}</td>
-                        <td>{{ $etudiant->ville->nom }}</td> <!-- Display city name -->
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="8" class="text-center">Aucun étudiant trouvé.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+    <div class="grid-container">
+            @forelse ($etudiants as $etudiant)
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $etudiant->nom }}</h5>
+                        <div class="card-text">
+                            <div><strong>Adresse:</strong> {{ $etudiant->address }}</div>
+                            <div><strong>Téléphone:</strong> {{ $etudiant->phone }}</div>
+                            <div><strong>Email:</strong> {{ $etudiant->email }}</div>
+                            <div><strong>Date de Naissance:</strong> {{ $etudiant->birth_date }}</div>
+                            <div><strong>Ville:</strong> {{ $etudiant->ville->name }}</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('student.show', $etudiant->id) }}" class="btn btn-info btn-sm">Voir</a>
+                        <a href="" class="btn btn-warning btn-sm">Modifier</a>
+                        <form action="" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?');">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            @empty
+                <p>Aucun étudiant trouvé.</p>
+            @endforelse
+        </div>
 </div>
 
 

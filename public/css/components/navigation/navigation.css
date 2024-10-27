@@ -14,9 +14,12 @@ nav {
 
 .nav-logo {
     font-size: 30px;
-    color: var(--nav-links-color);
     transition: var(--transition-nav);
     cursor: pointer;
+}
+
+.nav-logo a {
+    color: var(--nav-links-color);
 }
 
 .nav-links {

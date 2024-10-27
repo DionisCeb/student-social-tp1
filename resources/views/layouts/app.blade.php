@@ -8,10 +8,10 @@
 </head>
     <nav>
         <div class="nav-logo">
-            Student Social
+            <a href="{{ url('/') }}">Welcome</a>
         </div>
         <div class="nav-links">
-            <a href="">Student List</a>
+            <a href="{{ route('student.index') }}">Student List</a>
             <a href="">Student Create</a>
         </div>
     </nav>

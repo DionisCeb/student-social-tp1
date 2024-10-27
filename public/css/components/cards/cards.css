@@ -1,0 +1,64 @@
+:root {
+    --general-card-bg: #e7e7e7;
+    --transparent-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the cards take the full height within the grid */
+.card {
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--general-card-bg);
+    box-shadow: var(--transparent-card);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    max-width: 400px;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 30px;
+}
+.card-text {
+    background-color: var(--general-card-bg);
+}
+
+.card-text div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+/* Add a subtle hover effect on cards */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card footer with spacing */
+.card-footer {
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 2px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+}
+
+/* Buttons inside the footer */
+
+/* Center the Add Student button */
+.add-student {
+    margin-top: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .card-footer {
+        flex-direction: column;
+    }
+
+    .card-footer .btn {
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}

@@ -1,4 +1,5 @@
 @import url(utils/utils.css);
+@import url(grid/grid.css);
 body {
     background: linear-gradient(to right, #98bfb8, #41849f);
 }

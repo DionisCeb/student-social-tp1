@@ -41,9 +41,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Etudiant $etudiant)
     {
-        //
+        return view('student.show', ['etudiant' => $etudiant]);
     }
 
     /**
