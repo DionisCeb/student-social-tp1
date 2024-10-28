@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ville extends Model
+class City extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class Ville extends Model
 
     public function etudiants()
     {
-        return $this->hasMany(Etudiant::class);
+        return $this->hasMany(Student::class);
     }
 }

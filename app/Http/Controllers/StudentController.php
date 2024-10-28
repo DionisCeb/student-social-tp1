@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Etudiant;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -14,9 +14,9 @@ class StudentController extends Controller
 
     public function index()
     {
-        $etudiants = Etudiant::with('ville')->get();
+        $students = Student::with('city')->get();
 
-        return view('student.index', ['etudiants' => $etudiants]);
+        return view('student.index', ['students' => $students]);
     }
 
 
@@ -41,9 +41,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Etudiant $etudiant)
+    public function show(Student $student)
     {
-        return view('student.show', ['etudiant' => $etudiant]);
+        return view('student.show', ['student' => $student]);
     }
 
     /**

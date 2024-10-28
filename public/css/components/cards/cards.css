@@ -1,3 +1,4 @@
+@import url(profile.css);
 :root {
     --general-card-bg: #e7e7e7;
     --transparent-card: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,27 +39,29 @@
 .card-footer {
     border-top: 1px solid #e0e0e0;
     display: flex;
-    gap: 2px;
+    flex-direction: column;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
     padding-top: 5px;
+
+}
+
+/*the buttons*/
+.card-footer a {
+    width: 80%;
+}
+
+.card-footer form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card-footer form button {
+    width: 60%;
 }
 
 /* Buttons inside the footer */
 
 /* Center the Add Student button */
-.add-student {
-    margin-top: 30px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 576px) {
-    .card-footer {
-        flex-direction: column;
-    }
-
-    .card-footer .btn {
-        margin-bottom: 5px;
-        width: 100%;
-    }
-}
