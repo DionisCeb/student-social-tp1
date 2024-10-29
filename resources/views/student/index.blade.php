@@ -21,10 +21,10 @@
                     <div class="card-footer">
                         <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon">Voir <i class="fa-solid fa-eye"></i></a>
                         <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon">Modifier <i class="fa-solid fa-pen"></i></a>
-                        <form action="" method="POST" class="d-inline">
+                        <form action="{{ route('student.destroy', $student->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-icon" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?');">Supprimer <i class="fa-solid fa-trash"></i></button>
+                            <button type="submit" class="btn btn-icon" >Supprimer <i class="fa-solid fa-trash"></i></button>
                         </form>
                     </div>
                 </div>
