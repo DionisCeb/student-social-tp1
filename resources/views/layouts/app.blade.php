@@ -13,7 +13,7 @@
         </div>
         <div class="nav-links">
             <a href="{{ route('student.index') }}">Student List</a>
-            <a href="">Student Create</a>
+            <a href="{{ route('student.create') }}">Student Create</a>
         </div>
     </nav>
 

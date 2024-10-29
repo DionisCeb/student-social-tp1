@@ -6,7 +6,6 @@
 
 /* Ensure the cards take the full height within the grid */
 .card {
-    height: 100%;
     padding: 20px;
     border-radius: 10px;
     background-color: var(--general-card-bg);
@@ -31,7 +30,7 @@
 
 /* Add a subtle hover effect on cards */
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -58,9 +57,6 @@
     width: 100%;
 }
 
-.card-footer form button {
-    width: 60%;
-}
 
 /* Buttons inside the footer */
 

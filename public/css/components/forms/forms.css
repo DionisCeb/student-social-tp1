@@ -1,0 +1,32 @@
+.form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    background: var(--transparent-bg);
+    border-radius: 10px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-control input,select {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+/*error-form*/
+.form-error-input {
+    background: #b99191;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}

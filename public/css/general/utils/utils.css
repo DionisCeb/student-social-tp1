@@ -27,6 +27,13 @@
     flex-direction: column;
 }
 
+.height-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
 
 
 .height100 {
@@ -38,4 +45,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.m-auto {
+    margin: 0 auto;
 }

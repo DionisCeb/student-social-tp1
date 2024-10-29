@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon">Voir <i class="fa-solid fa-eye"></i></a>
-                        <a href="" class="btn btn-icon">Modifier <i class="fa-solid fa-pen"></i></a>
+                        <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon">Modifier <i class="fa-solid fa-pen"></i></a>
                         <form action="" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')

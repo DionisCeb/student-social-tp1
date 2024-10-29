@@ -43,5 +43,5 @@
 
 .btn-icon:hover {
     color: orange;
-    border: none;
+    border: 4px solid orange;
 }
