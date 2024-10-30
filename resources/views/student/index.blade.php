@@ -8,7 +8,12 @@
     <div class="grid-container">
             @forelse ($students as $student)
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body flex-col gap10">
+    
+                        <div class="card-image">
+                            <img src="{{ asset('img/profile/profile.webp')}}" alt="profile-image">
+                        </div>
+                        
                         <h5 class="card-title">{{ $student->name }}</h5>
                         <div class="card-text">
                             <div><strong>Adresse:</strong> {{ $student->address }}</div>
@@ -20,12 +25,6 @@
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon">Voir <i class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon">Modifier <i class="fa-solid fa-pen"></i></a>
-                        <form action="{{ route('student.destroy', $student->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-icon" >Supprimer <i class="fa-solid fa-trash"></i></button>
-                        </form>
                     </div>
                 </div>
             @empty

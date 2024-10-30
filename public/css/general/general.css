@@ -1,6 +1,7 @@
 @import url(utils/utils.css);
 @import url(grid/grid.css);
 @import url(variables/variables.css);
+@import url(animations/animations.css);
 
 body {
     background: linear-gradient(to right, #98bfb8, #41849f);
@@ -8,4 +9,13 @@ body {
 
 img {
     max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }

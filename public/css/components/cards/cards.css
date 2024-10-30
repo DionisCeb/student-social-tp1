@@ -12,26 +12,45 @@
     box-shadow: var(--transparent-card);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     max-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    
+
+    animation: fadeIn 1.2s ease-in-out forwards;
+    opacity: 0;
 }
 
 .card-title {
     text-align: center;
     font-size: 30px;
 }
+
 .card-text {
-    background-color: var(--general-card-bg);
+    background-color: #cecece;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .card-text div {
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
+    padding: 5px;
+    font-size: 18px;
+    transition: all 1s;
 }
 
 /* Add a subtle hover effect on cards */
 .card:hover {
     transform: scale(1.01);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-text div:hover {
+    transform: scale(0.96);
+    background: var(--transparent-bg);
 }
 
 /* Card footer with spacing */
@@ -51,13 +70,29 @@
     width: 80%;
 }
 
-.card-footer form {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+
+.card:nth-child(1) {
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(2) {
+    animation: fadeIn 1.5s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(3) {
+    animation: fadeIn 1.9s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(4) {
+    animation: fadeIn 2.3s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(5) {
+    animation: fadeIn 2.8s ease-in-out forwards;
+    opacity: 0;
 }
 
-
-/* Buttons inside the footer */
-
-/* Center the Add Student button */
+.card:nth-child(6) {
+    animation: fadeIn 3.2s ease-in-out forwards;
+    opacity: 0;
+}

@@ -1,0 +1,7 @@
+header.page-title {
+    text-align: center;
+    font-size: 30px;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    margin: 50px 0px;
+}

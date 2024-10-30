@@ -1,0 +1,26 @@
+:root {
+    --main-color: white;
+}
+.home header{
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.home h1{
+    font-size: 40px;
+    color: var(--main-color);
+    animation: fadeIn 1.2s ease-in-out forwards;
+    opacity: 0;
+}
+
+.home h2{
+    font-size: 26px;
+    color: var(--main-color);
+    animation: fadeIn 1.4s ease-in-out forwards;
+    opacity: 0;
+}
+
+.home .btn-container{
+    animation: fadeIn 1.6s ease-in-out forwards;
+    opacity: 0;
+}

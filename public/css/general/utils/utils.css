@@ -1,5 +1,12 @@
+@import url(../elements/elements.css);
 .structure {
     width: 80%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .structure {
+        width: 95%;
+    }
 }
 
 .flex {
@@ -50,4 +57,38 @@
 
 .m-auto {
     margin: 0 auto;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+
+.gap5 {
+    gap: 5px;
+}
+.gap10 {
+    gap: 10px;
+}
+.gap15 {
+    gap: 15px;
+}
+.gap20 {
+    gap: 20px;
 }
