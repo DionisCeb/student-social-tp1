@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Students List')
+@section('title', 'Liste des étudiants')
 @section('content')
 
 <div class="container">
-    <header class="page-title"><h1>Student-List</h1></header>
+    <header class="page-title"><h1>Liste des étudiants</h1></header>
 
     <div class="grid-container">
             @forelse ($students as $student)

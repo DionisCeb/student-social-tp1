@@ -4,4 +4,7 @@ header.page-title {
     color: var(--main-color);
     border-bottom: 2px solid var(--main-color);
     margin: 50px 0px;
+
+    animation: fadeIn 3.2s ease-in-out forwards;
+    opacity: 0;
 }

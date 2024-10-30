@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Student Details')
+@section('title', 'Détails')
 @section('content')
 
 
@@ -8,11 +8,22 @@
         <img src="{{ asset('img/profile/profile.webp')}}" alt="profile-image">
         <div class="profile-links flex-col gap20 mt-20">
             <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon">Modifier <i class="fa-solid fa-pen"></i></a>
-            <form action="{{ route('student.destroy', $student->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-icon danger" >Supprimer <i class="fa-solid fa-trash"></i></button>
-            </form>
+            <!-- Delete Button -->
+            <button class="btn btn-icon danger" id="open-popup">Supprimer <i class="fa-solid fa-trash"></i></button>
+
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <h3>Etes-vous sûr de vouloir supprimer cet élève ?</h3>
+                    <form action="{{ route('student.destroy', $student->id) }}" method="POST" class="flex-col gap20">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-icon danger">
+                            Supprimer <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <button type="button" class="btn" id="close-popup">Annuler</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="profile-body">
@@ -26,6 +37,7 @@
         </div>
     </div>         
 </div>
+
 
 
 @endsection
