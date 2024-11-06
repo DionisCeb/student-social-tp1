@@ -19,8 +19,7 @@
     gap: 10px;
     
 
-    animation: fadeIn 1.2s ease-in-out forwards;
-    opacity: 0;
+
 }
 
 .card-title {
@@ -94,5 +93,13 @@
 
 .card:nth-child(6) {
     animation: fadeIn 3.2s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(7) {
+    animation: fadeIn 3.4s ease-in-out forwards;
+    opacity: 0;
+}
+.card:nth-child(8) {
+    animation: fadeIn 3.6s ease-in-out forwards;
     opacity: 0;
 }

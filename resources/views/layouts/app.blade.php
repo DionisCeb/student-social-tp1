@@ -5,33 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script type="module" src="{{ asset('js/main.js')}}" defer></script>
     <title>@yield('title')</title>
 </head>
-<!-- <nav>
-    <div class="nav-logo">
-        <a href="{{ url('/') }}">Welcome</a>
-    </div>   
 
-    <div class="nav-links" id="nav-links">
-        <a href="{{ route('student.index') }}">Student List</a>
-        <a href="{{ route('student.create') }}">Student Create</a>
-    </div>
-
-    <div class="menu-icon">
-        <img 
-            src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" 
-            id="burger-icon" 
-            alt="Open Menu" 
-            class="icon"
-        />
-        <img 
-            src="https://img.icons8.com/?size=100&id=8112&format=png&color=000000" 
-            id="close-icon" 
-            alt="Close Menu" 
-            class="icon hidden"
-        />
-    </div>
-</nav> -->
 
 <nav>
 
@@ -39,12 +16,12 @@
         <a href="{{ url('/') }}"><img src="https://img.icons8.com/?size=100&id=44842&format=png&color=000000" alt="home-page"></a>
     </div>   
 <div class="page-links">
-    <a href="{{ route('student.index') }}" class="nav-btn">Student List</a>
-    <a href="{{ route('student.create') }}" class="nav-btn">Student Create</a>
+    <a href="{{ route('student.index') }}" class="nav-btn">Liste des étudiants</a>
+    <a href="{{ route('student.create') }}" class="nav-btn">Création d'étudiant</a>
 </div>
 <div class="contact-us">
     <div class="contact-us">
-        <a href="{{ route('student.index') }}" class="btn">Authentificate</a>
+        <a href="{{ route('student.index') }}" class="btn">Se connecter</a>
     </div>
 </div>
 
@@ -55,8 +32,8 @@
 </div>
 
 <div class="dropdown_menu">
-    <li><a href="{{ route('student.index') }}" role="menuitem">Student List</a></li>
-    <li><a href="{{ route('student.create') }}" role="menuitem">Student Create</a></li>
+    <li><a href="{{ route('student.index') }}" role="menuitem">Liste des étudiants</a></li>
+    <li><a href="{{ route('student.create') }}" role="menuitem">Création d'étudiant</a></li>
     <div class="dropdown_menu--connection">
         <a class="btn" href="{{ route('student.index') }}">Authentification</a>
     </div>
@@ -68,9 +45,9 @@
         <div class="structure">
             @if(session('success'))
                 
-                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                        {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div class="alert" id="alert-box" style="display: none;">
+                    <p>{{ session('success') }}</p>
+                    <button type="button" class="close" id="close-alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -79,32 +56,16 @@
         </div>
     </main>
 
+    <footer class="footer flex-col gap20">
+            <div class="page-links">
+                <a class="nav-btn" href="{{ url('/') }}">Accueil</a>
+                <span class="nav-btn">&middot;</span>
+                <a class="nav-btn" href="{{ route('student.index') }}">Liste des étudiants</a>
+                <span class="">&middot;</span>
+                <a class="nav-btn" href="{{ route('student.create') }}">Création d'étudiant</a>
+            </div>
+        <div class="copyright"><div class="small m-0">Copyright &copy; Réalisé en 2024, par Dionis</div></div>
+    </footer>
 
-    <script>
-        class Navigation {
-            constructor() {
-                this.mobileNav = document.querySelector(".hamburger");
-                this.navbar = document.querySelector(".dropdown_menu");
-
-                this.initEvents();
-            }
-
-            toggleNav() {
-                this.navbar.classList.toggle("open");
-                this.mobileNav.classList.toggle("hamburger-active");
-            }
-
-            initEvents() {
-                if (this.mobileNav) {
-                    this.mobileNav.addEventListener("click", () => this.toggleNav());
-                }
-            }
-        }
-
-        const navigation = new Navigation();
-        
-
-
-    </script>
 </body>
 </html>

@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Students List')
+@section('title', 'Créer un étudiant')
 @section('content')
 
 
 <div class="container height-center">
     <form action="{{ route('student.store') }}" method="POST" class="form">
-        @csrf  <!-- Laravel CSRF token protection -->
+        @csrf  
     
         <div class="form-control">
-            <label for="name">Name:</label>
-            <input type="text" placeholder="Enter Student Name" name="name" value="{{ old('name') }}" required>
+            <label for="name">Nom:</label>
+            <input type="text" placeholder="Entrez le nom de l'étudiant" name="name" value="{{ old('name') }}" required>
             @if($errors->has('name'))
                 <div class="form-error-input">
                     {{ $errors->first('name') }}
@@ -19,8 +19,8 @@
         
     
         <div class="form-control">
-            <label for="address">Address:</label>
-            <input type="text" placeholder="Enter Student Address" name="address" value="{{ old('address') }}" required>
+            <label for="address">Adresse:</label>
+            <input type="text" placeholder="Entrez l'adresse de l'étudiant" name="address" value="{{ old('address') }}" required>
             @if($errors->has('address'))
                 <div class="form-error-input">
                     {{ $errors->first('address') }}
@@ -29,7 +29,7 @@
         </div>
     
         <div class="form-control">
-            <label for="city">City:</label>
+            <label for="city">Ville:</label>
             <select name="city_id" required>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
@@ -43,7 +43,7 @@
         </div>
     
         <div class="form-control">
-            <label for="birth_date">Birth Date:</label>
+            <label for="birth_date">Date de naissance :</label>
             <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}" required> 
             @if($errors->has('birth_date'))
                 <div class="form-error-input">
@@ -54,7 +54,7 @@
         </div>
     
         <div class="form-control">
-            <label for="phone">Phone:</label>
+            <label for="phone">Téléphone:</label>
             <input type="tel" placeholder="ex: 4222121233" name="phone" value="{{ old('phone') }}" required>
             @if($errors->has('phone'))
                 <div class="form-error-input">

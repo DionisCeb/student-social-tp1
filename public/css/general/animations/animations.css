@@ -1,3 +1,4 @@
+@import url(modals/modal.css);
 /* Define the fade-in animation */
 @keyframes fadeIn {
     0% {

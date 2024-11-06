@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Student Edit')
+@section('title', "Modifier l'étudiant")
 @section('content')
 
 
 <div class="container height-center">
     <form action="{{ route('student.update', $student->id) }}" method="POST" class="form">
-        @csrf  <!-- Laravel CSRF token protection -->
+        @csrf  
     
         <div class="form-control">
             <label for="name">Name:</label>

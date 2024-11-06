@@ -24,7 +24,7 @@ class StudentController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Afficher le formulaire de création d'une nouvelle étudiant
      */
     public function create()
     {
@@ -33,12 +33,12 @@ class StudentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Enregistrer les données sur la création de l'étudiant
      */
     public function store(Request $request)
     {
         
-        // Validate the request data
+        // Valider les données
         $validated = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
@@ -48,15 +48,15 @@ class StudentController extends Controller
             'email' => 'required|email|unique:students,email',
         ]);
 
-        // Create the new student
+        // Créer le nouvel étudiant
         Student::create($validated);
 
-        // Redirect to the students list with a success message
+        // Redirection vers la liste des étudiants avec un message de réussite
         return redirect()->route('student.index')->with('success', 'Student created successfully!');
     }
 
     /**
-     * Display the specified resource.
+     * Afficher les détails de l'étudiant spécifique
      */
     public function show(Student $student)
     {
@@ -64,7 +64,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire d'édition de l'étudiant
      */
     public function edit(Student $student)
     {
@@ -73,7 +73,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Mettre à jour les informations de l'étudiant
      */
     public function update(Request $request, Student $student)
     {
@@ -86,13 +86,13 @@ class StudentController extends Controller
             'email' => 'required|email|unique:students,email,' . $student->id,
         ]);
 
-        // Update only if validation is succesful
+        // Mettre à jour uniquement si la validation est réussie
         $student->update($validated);
         return redirect()->route('student.index')->with('success', 'Student updated successfully!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprimer l'étudiant
      */
     public function destroy(Student $student)
     {
