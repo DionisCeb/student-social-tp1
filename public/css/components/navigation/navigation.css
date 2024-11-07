@@ -1,3 +1,4 @@
+@import url(dropdown.css);
 :root { 
     --nav-bg: white;
     --links--nav--size: 20px;
@@ -323,6 +324,7 @@ a.dropdown-btn:hover {
         width: 50%;
     }
     /*menu content*/
+    .dropdown,
     .greet-user,
     .contact-us .btn,
     .page-links {

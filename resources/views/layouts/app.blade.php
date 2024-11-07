@@ -21,7 +21,15 @@
 </div>
 <div class="contact-us">
     <div class="contact-us">
-        <a href="{{ route('student.index') }}" class="btn">Se connecter</a>
+        <a href="{{ route('student.index') }}" class="btn">@lang('Login')</a>
+       
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">@lang('Language')</button>
+        <div class="dropdown-content">
+            <a href="{{ route('lang', 'en') }}">@lang('English')</a>
+            <a href="{{ route('lang', 'fr') }}">@lang('French')</a>
+        </div>
     </div>
 </div>
 
@@ -35,7 +43,7 @@
     <li><a href="{{ route('student.index') }}" role="menuitem">Liste des étudiants</a></li>
     <li><a href="{{ route('student.create') }}" role="menuitem">Création d'étudiant</a></li>
     <div class="dropdown_menu--connection">
-        <a class="btn" href="{{ route('student.index') }}">Authentification</a>
+        <a class="btn" href="{{ route('student.index') }}">@lang('Login')</a>
     </div>
 </div>
 </nav>
