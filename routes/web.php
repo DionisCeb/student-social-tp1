@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SetLocaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,7 @@ Route::post('/store/student', [StudentController::class, 'store'])->name('studen
 Route::get('/edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update/student/{student}', [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+Route::get('/lang/{locale}', [SetLocaleController::class, 'index'])->name('lang');
 
 
