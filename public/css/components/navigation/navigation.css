@@ -9,7 +9,7 @@
 }
 
 /*body of nav*/
-nav {
+.nav {
     padding: 20px;
     display: flex;
     justify-content: space-around;
@@ -78,6 +78,10 @@ a.nav-btn.active-nav-btn {
     opacity: 0;
 }
 
+.contact-us img {
+    width: 40px;
+}
+
 .contact-btn {
     padding: 20px;
     background-color: var(--primary-link);
@@ -92,8 +96,9 @@ a.nav-btn.active-nav-btn {
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: var(--links--nav--size);
-    color: var(--primary-link-color-nav);
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(88 118 145);
 }
 
 .greet-user span {

@@ -4,5 +4,7 @@
     "French": "French",
     "Login":"Login",
     "Logout":"Logout",
-    "Users":"Users"
+    "Welcome": "Welcome",
+    "Student List": "Student List",
+    "Student Create": "Create Student"
 }

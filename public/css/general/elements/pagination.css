@@ -1,0 +1,29 @@
+[role="navigation"] {
+    /* Example styles for the navigation element */
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+    display: flex;
+}
+
+/* Select the second <div> inside <nav role="navigation"> */
+[role="navigation"] > div > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;  /* Align child elements in a horizontal row */
+    justify-content: flex-start; /* Align items to the left (optional, you can adjust this) */
+    align-items: center; /* Align items vertically in the center (optional) */
+}
+
+/* Apply additional styling to child elements inside the second <div> */
+[role="navigation"] > div > div:nth-child(2) > * {
+    margin-right: 10px;  /* Optional: add space between child elements */
+}
+
+[role="navigation"] > div > div:nth-child(2) > div{
+    background-color: gray;
+}
