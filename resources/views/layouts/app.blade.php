@@ -5,32 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
     <script type="module" src="{{ asset('js/main.js')}}" defer></script>
     <title>@yield('title')</title>
 </head>
 
 
-<nav>
+<nav class="nav">
 
 <div class="nav-logo">
         <a href="{{ url('/') }}"><img src="https://img.icons8.com/?size=100&id=44842&format=png&color=000000" alt="home-page"></a>
     </div>   
 <div class="page-links">
-    <a href="{{ route('student.index') }}" class="nav-btn">Liste des étudiants</a>
-    <a href="{{ route('student.create') }}" class="nav-btn">Création d'étudiant</a>
+    <a href="{{ route('student.index') }}" class="nav-btn">@lang('Student List')</a>
+    <a href="{{ route('student.create') }}" class="nav-btn">@lang('Student Create')</a>
 </div>
 <div class="contact-us">
-    <div class="contact-us">
-        <a href="{{ route('student.index') }}" class="btn">@lang('Login')</a>
-       
-    </div>
     <div class="dropdown">
-        <button class="dropbtn">@lang('Language')</button>
-        <div class="dropdown-content">
+        <!-- <button class="dropbtn btn">@lang('Language')</button> -->
+        <img src="{{ asset('img/nav/language.png')}}" alt="language settings">
+        <div class="dropdown-box">
             <a href="{{ route('lang', 'en') }}">@lang('English')</a>
             <a href="{{ route('lang', 'fr') }}">@lang('French')</a>
         </div>
     </div>
+    <div class="contact-us">
+        @auth
+            <a href="{{route('logout')}}"><img src="{{ asset('img/nav/logout.png')}}" alt=""></a>
+        @else
+            <a href="{{route('login')}}"><img src="{{ asset('img/nav/login.png')}}" alt=""></a>
+        @endauth
+           
+    </div>
+    
+    @auth
+        <div class="greet-user">
+            <p>@lang('Welcome'), <strong>{{Auth::user()->name}}</strong></p>
+        </div>
+    @else
+        
+    @endauth
 </div>
 
 <div class="hamburger">

@@ -3,6 +3,8 @@
     "English": "Anglais",
     "French": "Français",
     "Login":"Connexion",
-    "Logout":"Deconnexion"
-    
+    "Logout":"Deconnexion",
+    "Welcome": "Bonjour",
+    "Student List": "Liste des étudiants",
+    "Student Create": "Création d'étudiant"
 }
