@@ -1,29 +1,38 @@
-[role="navigation"] {
-    /* Example styles for the navigation element */
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+.pagination-container .pagination {
     display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Select the second <div> inside <nav role="navigation"> */
-[role="navigation"] > div > div:nth-child(2) {
-    display: flex;
-    flex-direction: row;  /* Align child elements in a horizontal row */
-    justify-content: flex-start; /* Align items to the left (optional, you can adjust this) */
-    align-items: center; /* Align items vertically in the center (optional) */
+.pagination-container .pagination li {
+    margin-right: 8px;
 }
 
-/* Apply additional styling to child elements inside the second <div> */
-[role="navigation"] > div > div:nth-child(2) > * {
-    margin-right: 10px;  /* Optional: add space between child elements */
+.pagination-container .pagination li a,
+.pagination-container .pagination li span {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #f3f4f6;
+    text-decoration: none;
+    color: #4b5563; /* Tailwind's gray-700 */
 }
 
-[role="navigation"] > div > div:nth-child(2) > div{
-    background-color: gray;
+.pagination-container .pagination li a:hover {
+    background-color: #e5e7eb; /* Tailwind's gray-200 */
+}
+
+.pagination-container .pagination li.active span {
+    background-color: #2563eb; /* Tailwind's blue-600 */
+    color: white;
+}
+
+.pagination-container .pagination li.disabled span {
+    background-color: #e5e7eb;
+    color: #d1d5db; /* Tailwind's gray-300 */
+}
+
+.pagination-container .pagination li.active a {
+    background-color: #2563eb;
+    color: white;
 }
