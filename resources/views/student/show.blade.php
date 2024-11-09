@@ -35,8 +35,38 @@
             <div><strong>Date de Naissance:</strong> {{ $student->birth_date }}</div>
             <div><strong>Ville:</strong> {{ $student->city->name }}</div>
         </div>
-    </div>         
+        <div class="forum-container">
+        <form action="" class="form">
+            <div class="form-control">
+                <label for="date">Title:</label>
+                <input type="text" name="title">
+            </div>
+            <div class="form-control">
+                <label for="date">Content:</label>
+                <textarea name="content" id=""></textarea>
+            </div>
+            <div class="form-control">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Article</button>     
+        </form>
+    </div>   
+   
+    </div>   
 </div>
+
+<section class="forum">
+    <header class="page-title"><h1>Forum</h1></header>
+    <div class="forum-article">
+        <div class="article-title">Title 1</div>
+        <div class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis maiores similique iure error incidunt dolore eius doloribus numquam culpa aspernatur?</div>
+        <div class="article-date">Date: 24-10-2024</div>
+        <div class="article-author">Author: Mike Random</div>
+    </div>
+</section>
+
+   
 
 
 
