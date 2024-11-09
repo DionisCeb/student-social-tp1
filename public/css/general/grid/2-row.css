@@ -1,0 +1,10 @@
+.grid-container.row-2 {
+    grid-template-columns: auto auto;
+}
+
+
+@media only screen and (max-width: 1600px) {
+    .grid-container.row-2 {
+        grid-template-columns: auto;
+    }
+}

@@ -36,7 +36,9 @@
             <div><strong>Ville:</strong> {{ $student->city->name }}</div>
         </div>
         <div class="forum-container">
-        <form action="" class="form">
+        <form action="{{ route('article.store', ['student' => $student->id]) }}" class="form" method="POST">
+
+            @csrf
             <div class="form-control">
                 <label for="date">Title:</label>
                 <input type="text" name="title">
@@ -58,11 +60,15 @@
 
 <section class="forum">
     <header class="page-title"><h1>Forum</h1></header>
-    <div class="forum-article">
-        <div class="article-title">Title 1</div>
-        <div class="article-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis maiores similique iure error incidunt dolore eius doloribus numquam culpa aspernatur?</div>
-        <div class="article-date">Date: 24-10-2024</div>
-        <div class="article-author">Author: Mike Random</div>
+    <div class="grid-container row-2">
+        @foreach ($student->articles as $article)
+        <div class="forum-article">
+            <div class="article-title">{{ $article->title }}</div>
+            <div class="article-description">{{ $article->content }}</div>
+            <div class="article-date">Date: {{ $article->publication_date }}</div>
+            <div class="article-author">Author: {{ $student->name }}</div>
+        </div>
+        @endforeach
     </div>
 </section>
 
