@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,18 @@ use App\Http\Controllers\StudentController;
 
 Route::get('/students', [StudentController::class, 'index'])->name('student.index');
 Route::get('/student/{student}', [StudentController::class, 'show'])->name('student.show');
+
 Route::get('/create/student', [StudentController::class, 'create'])->name('student.create');
 Route::post('/store/student', [StudentController::class, 'store'])->name('student.store');
 Route::get('/edit/student/{student}', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/update/student/{student}', [StudentController::class, 'update'])->name('student.update');
 Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
 
+
+/**
+ * Article creation
+ */
+Route::post('/student/{student}/articles', [ArticleController::class, 'store'])->name('article.store');
 
 /**
  * USER CREATE
@@ -49,5 +56,8 @@ Route::post('/login', [AuthController::class, 'store'])->name('login.store');
 Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::get('/lang/{locale}', [SetLocaleController::class, 'index'])->name('lang');
+
+
+
 
 
