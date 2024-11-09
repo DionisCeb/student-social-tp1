@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
 use App\Models\City;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -48,6 +49,9 @@ class StudentController extends Controller
             'email' => 'required|email|unique:students,email',
         ]);
 
+        // Add the user_id of the currently authenticated user
+        $validated['user_id'] = Auth::id();
+
         // Créer le nouvel étudiant
         Student::create($validated);
 
@@ -77,6 +81,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
+        // Ensure that only the student creator (user) can update their record
+        if ($student->user_id !== Auth::id()) {
+            return redirect()->route('student.index')->withErrors('You are not authorized to update this student.');
+        }
+
         $validated = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
@@ -96,6 +105,10 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        // Ensure that only the student creator (user) can update their record
+        if ($student->user_id !== Auth::id()) {
+            return redirect()->route('student.index')->withErrors('You are not authorized to delete this student.');
+        }
         $student->delete();
         return redirect()->route('student.index')->with('success', 'Student deleted successfully!');
     }

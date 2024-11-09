@@ -11,10 +11,15 @@ class Student extends Model
 
     protected $table = 'students';
 
-    protected $fillable = ['name', 'address', 'phone', 'email', 'birth_date', 'city_id'];
+    protected $fillable = ['name', 'address', 'phone', 'email', 'birth_date', 'city_id', 'user_id'];
 
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
