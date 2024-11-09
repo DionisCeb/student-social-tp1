@@ -64,6 +64,62 @@
 }
 
 
+/*forum*/
+.forum-container {
+    display: flex;
+}
+
+.forum-container button {
+    width: 50%;
+}
+
+.forum-container form {
+    display: flex;
+    width: 100%;
+}
+
+
+.forum-container form textarea {
+    min-height: 100px;
+}
+.forum-container form input[type="date"] {
+    width: 50%;
+}
+
+
+/*article*/
+.forum .forum-article{
+    background-color: var(--transparent-bg);
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.article-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.article-description {
+    font-size: 26px;
+}
+
+.article-author,
+.article-date {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--accent-color);
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding: 20px;
+    width: 10%;
+}
+
 /*responsive*/
 @media only screen and (max-width: 1200px) {
     .profile {

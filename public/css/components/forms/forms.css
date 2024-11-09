@@ -14,9 +14,14 @@
     gap: 10px;
 }
 
-.form-control input,select {
+.form-control label {
+    color:var(--accent-color);
+    font-weight: bold;
+    font-size: 25px;
+}
+.form-control input,select, textarea {
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
 }
 
