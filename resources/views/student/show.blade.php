@@ -36,24 +36,28 @@
             <div><strong>Ville:</strong> {{ $student->city->name }}</div>
         </div>
         <div class="forum-container">
-        <form action="{{ route('article.store', ['student' => $student->id]) }}" class="form" method="POST">
+            @if(Auth::check() && Auth::id() === $student->user_id)
+            <form action="{{ route('article.store', ['student' => $student->id]) }}" class="form" method="POST">
 
-            @csrf
-            <div class="form-control">
-                <label for="date">Title:</label>
-                <input type="text" name="title">
-            </div>
-            <div class="form-control">
-                <label for="date">Content:</label>
-                <textarea name="content" id=""></textarea>
-            </div>
-            <div class="form-control">
-                <label for="date">Date:</label>
-                <input type="date" name="date" id="">
-            </div>
-            <button type="submit" class="btn btn-primary">Create Article</button>     
-        </form>
-    </div>   
+                @csrf
+                <div class="form-control">
+                    <label for="date">Title:</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="form-control">
+                    <label for="date">Content:</label>
+                    <textarea name="content" id=""></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" id="">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Article</button>     
+            </form>
+            
+                
+            @endif
+     </div>   
    
     </div>   
 </div>
