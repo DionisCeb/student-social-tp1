@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container height-center">
+<div class="container height-center flex-col gap20">
     <form method="POST" class="form">
         @csrf 
         
@@ -32,10 +32,11 @@
     
     
         <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-
-    <div>
-        <a href="{{ route('user.create') }}">Create account</a>
+    </form>  
+    <div class="form gap5 text-center font-20 ">
+            <p>Don't have an account yet?</p>
+            <a href="{{ route('user.create') }}">Create account</a>
     </div>
 </div>
+
 @endsection

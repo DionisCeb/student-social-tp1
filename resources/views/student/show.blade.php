@@ -73,10 +73,26 @@
             <div class="article-description">{{ $article->content }}</div>
             <div class="article-date">Date: {{ $article->publication_date }}</div>
             <div class="article-author">Author: {{ $student->name }}</div>
+
+            @if(Auth::check() && Auth::id() === $student->user_id)
+            <div class="profile-links flex gap20 mt-20">
+                <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">Edit <i class="fa-solid fa-pen"></i></a>
+                <!-- Delete Button -->
+                
+                <form action="{{ route('article.destroy', ['article' => $article->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-icon danger" id="open-popup">Supprimer <i class="fa-solid fa-trash"></i></button>
+                </form>
+
+                
+            </div>
+        @endif
         </div>
         @endforeach
     </div>
 </section>
+
 
    
 

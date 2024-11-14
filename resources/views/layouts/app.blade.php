@@ -26,7 +26,6 @@
             <p>@lang('Welcome'), <strong>{{ Auth::user()->name }}</strong></p>
 
             @php
-                // Retrieve the student record associated with the logged-in user
                 $student = Auth::user()->student;
             @endphp
 

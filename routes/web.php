@@ -38,6 +38,10 @@ Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name
  * Article creation
  */
 Route::post('/student/{student}/articles', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/edit/student/articles/{article}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::post('/edit/student/articles/{article}', [ArticleController::class, 'update'])->name('article.update');
+Route::delete('/student/articles/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
 
 /**
  * USER CREATE
