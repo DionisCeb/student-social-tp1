@@ -21,6 +21,27 @@
     <a href="{{ route('student.create') }}" class="nav-btn">@lang('Student Create')</a>
 </div>
 <div class="contact-us">
+    @auth
+        <div class="greet-user">
+            <p>@lang('Welcome'), <strong>{{ Auth::user()->name }}</strong></p>
+
+            @php
+                $student = Auth::user()->student;
+            @endphp
+
+            @if($student)
+                <a href="{{ route('student.show', $student->id) }}">
+                    <img class="profile-nav" src="{{ asset('img/profile/profile.webp')}}" alt="profile-img">
+                </a>
+            @else
+                <a href="{{ route('student.create') }}">
+                    <img class="profile-nav" src="{{ asset('img/profile/profile.webp')}}" alt="profile-img">
+                </a>
+            @endif
+        </div>
+    @endauth
+
+
     <div class="dropdown">
         <!-- <button class="dropbtn btn">@lang('Language')</button> -->
         <img src="{{ asset('img/nav/language.png')}}" alt="language settings">
@@ -29,6 +50,7 @@
             <a href="{{ route('lang', 'fr') }}">@lang('French')</a>
         </div>
     </div>
+
     <div class="contact-us">
         @auth
             <a href="{{route('logout')}}"><img src="{{ asset('img/nav/logout.png')}}" alt=""></a>
@@ -38,13 +60,6 @@
            
     </div>
     
-    @auth
-        <div class="greet-user">
-            <p>@lang('Welcome'), <strong>{{Auth::user()->name}}</strong></p>
-        </div>
-    @else
-        
-    @endauth
 </div>
 
 <div class="hamburger">

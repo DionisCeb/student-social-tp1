@@ -1,4 +1,5 @@
 @import url(../elements/elements.css);
+@import url(text.css);
 .structure {
     width: 80%;
 }
@@ -92,3 +93,6 @@
 .gap20 {
     gap: 20px;
 }
+
+
+
