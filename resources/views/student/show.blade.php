@@ -60,38 +60,74 @@
                 
             @endif
      </div>   
-   
+
+     @if(Auth::check() && Auth::id() === $student->user_id)
+    <!--File upload form-->
+    <div class="forum-container">
+        <form  action="" class="form">
+            <h2>@lang('Upload')</h2>
+            @csrf
+            <div class="form-control">
+                <label for="title">@lang('Title'):</label>
+                <input type="text" name="title">
+            </div>
+            <div class="form-control">
+                <label for="date">@lang('Date'):</label>
+                <input type="date" name="date" id="">
+            </div>
+            <!--File uploader input--->
+            <div class="form-control">
+                <label for="file">@lang('File'):</label>
+                <div class="file-upload-container">
+                    <div class="file-upload-text">
+                        <span>@lang('Drop Files Here')</span>
+                    </div>
+                    <div class="file-upload-or">
+                        <span>@lang('Or')</span>
+                    </div>
+                    <div class="file-upload-browse">
+                        <label for="file" class="btn-browse">@lang('Browse')</label>
+                    </div>
+                    <input type="file" name="file" id="file" style="display: none;">
+                </div>
+            </div>
+            </div>
+          </label>
+        </form>
+    </div>
+    @endif
     </div>   
+    <section class="forum">
+        <header class="page-title"><h1>Forum</h1></header>
+        <div class="grid-container row-2">
+            @foreach ($student->articles as $article)
+            <div class="forum-article">
+                <div class="article-title">{{ $article->title }}</div>
+                <div class="article-description">{{ $article->content }}</div>
+                <div class="article-date">Date: {{ $article->publication_date }}</div>
+                <div class="article-author">Author: {{ $student->name }}</div>
+
+                @if(Auth::check() && Auth::id() === $student->user_id)
+                <div class="profile-links flex gap20 mt-20">
+                    <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">Edit <i class="fa-solid fa-pen"></i></a>
+                    <!-- Delete Button -->
+                    
+                    <form action="{{ route('article.destroy', ['article' => $article->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-icon danger" id="open-popup">Supprimer <i class="fa-solid fa-trash"></i></button>
+                    </form>
+
+                    
+                </div>
+            @endif
+            </div>
+            @endforeach
+        </div>
+    </section>
 </div>
 
-<section class="forum">
-    <header class="page-title"><h1>Forum</h1></header>
-    <div class="grid-container row-2">
-        @foreach ($student->articles as $article)
-        <div class="forum-article">
-            <div class="article-title">{{ $article->title }}</div>
-            <div class="article-description">{{ $article->content }}</div>
-            <div class="article-date">Date: {{ $article->publication_date }}</div>
-            <div class="article-author">Author: {{ $student->name }}</div>
 
-            @if(Auth::check() && Auth::id() === $student->user_id)
-            <div class="profile-links flex gap20 mt-20">
-                <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">Edit <i class="fa-solid fa-pen"></i></a>
-                <!-- Delete Button -->
-                
-                <form action="{{ route('article.destroy', ['article' => $article->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-icon danger" id="open-popup">Supprimer <i class="fa-solid fa-trash"></i></button>
-                </form>
-
-                
-            </div>
-        @endif
-        </div>
-        @endforeach
-    </div>
-</section>
 
 
    
