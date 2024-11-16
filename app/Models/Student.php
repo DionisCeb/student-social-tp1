@@ -28,4 +28,11 @@ class Student extends Model
         return $this->hasMany(Article::class);
     }
 
+    /**
+     * Files that belongs to a student
+     */
+    public function files() {
+        return $this->hasMany(File::class);
+    }
+
 }

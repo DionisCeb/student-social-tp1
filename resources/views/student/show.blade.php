@@ -64,16 +64,26 @@
      @if(Auth::check() && Auth::id() === $student->user_id)
     <!--File upload form-->
     <div class="forum-container">
-        <form  action="" class="form">
+        <form  action="{{ route('file.upload', ['student' => $student->id]) }}" class="form" method="POST" enctype="multipart/form-data">
             <h2>@lang('Upload')</h2>
             @csrf
             <div class="form-control">
                 <label for="title">@lang('Title'):</label>
                 <input type="text" name="title">
+                @if($errors->has('title'))
+                    <div class="form-error-input">
+                        {{ $errors->first('title') }}
+                    </div>      
+                @endif
             </div>
             <div class="form-control">
-                <label for="date">@lang('Date'):</label>
-                <input type="date" name="date" id="">
+                <label for="upload_date">@lang('Date'):</label>
+                <input type="date" name="upload_date" id="upload_date">
+                @if($errors->has('upload_date'))
+                    <div class="form-error-input">
+                        {{ $errors->first('upload_date') }}
+                    </div>      
+                @endif
             </div>
             <!--File uploader input--->
             <div class="form-control">
@@ -90,9 +100,14 @@
                     </div>
                     <input type="file" name="file" id="file" style="display: none;">
                 </div>
+                @if($errors->has('file'))
+                    <div class="form-error-input">
+                        {{ $errors->first('file') }}
+                    </div>      
+                @endif
             </div>
+            <button type="submit" class="btn btn-primary">@lang('Upload File')</button>     
             </div>
-          </label>
         </form>
     </div>
     @endif
