@@ -111,6 +111,7 @@
         </form>
     </div>
     @endif
+    </div>
     </div>   
     <section class="uploaded-files">
         <div class="uploaded-files-container">
@@ -118,8 +119,12 @@
             <ul>
                 @foreach ($student->files as $file)
                     <div class="upload-doc">
+                        <div class="delete-doc"><i class="fa-solid fa-trash"></i></div>
+                        <div class="upload-bg">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
                         <a href="{{ Storage::url($file->file_path) }}" target="_blank">{{ $file->title }} <i class="fa-solid fa-download"></i></a>
-                         <span>Uploaded on: {{ $file->upload_date }}</span>
+                         <span>@lang('Uploaded'): {{ $file->upload_date }}</span>
                     </div>
                 @endforeach
             </ul>
@@ -147,7 +152,6 @@
                     </form>
 
                     
-                </div>
             @endif
             </div>
             @endforeach
