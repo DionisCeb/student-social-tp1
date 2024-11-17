@@ -25,7 +25,7 @@ class FileController extends Controller
         ]);
 
         // Store the uploaded file
-        $filePath = $request->file('file')->store('uploads/files');
+        $filePath = $request->file('file')->store('uploads/files', 'public');
 
         // Save file information to the database
         File::create([
@@ -37,5 +37,15 @@ class FileController extends Controller
 
         return redirect()->route('student.show', $student->id)
             ->with('success', 'File uploaded successfully!');
+    }
+
+    public function download(File $file) {
+        // Verifier si le fichier exists
+        if (Storage::exists($file->file_path)) {
+            // retourner le fichier pour le telecharger
+            return Storage::download($file->file_path);
+        } else {
+            return redirect()->back()->withErrors("The requested file could not be found");
+        }
     }
 }
