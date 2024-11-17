@@ -112,6 +112,19 @@
     </div>
     @endif
     </div>   
+    <section class="uploaded-files">
+        <div class="uploaded-files-container">
+            <header class="page-title"><h1>@lang('Uploaded Files')</h1></header>
+            <ul>
+                @foreach ($student->files as $file)
+                    <div class="upload-doc">
+                        <a href="{{ Storage::url($file->file_path) }}" target="_blank">{{ $file->title }} <i class="fa-solid fa-download"></i></a>
+                         <span>Uploaded on: {{ $file->upload_date }}</span>
+                    </div>
+                @endforeach
+            </ul>
+        </div>
+    </section>
     <section class="forum">
         <header class="page-title"><h1>Forum</h1></header>
         <div class="grid-container row-2">
