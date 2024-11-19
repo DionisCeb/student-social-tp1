@@ -31,13 +31,20 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    font-size: 30px;
 }
 .upload-doc .delete-doc i {
     color: rgb(166, 35, 35);
     cursor: pointer;
+    font-size: 30px;
 }
 
 .upload-doc i {
     color: rgb(178, 75, 28);
+}
+
+/*
+*Delete button as a form
+*/
+.delete-doc button { 
+    border: none;
 }

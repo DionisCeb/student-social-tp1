@@ -48,6 +48,7 @@ Route::delete('/student/articles/{article}', [ArticleController::class, 'destroy
  */
 Route::post('/student/{student}/upload', [FileController::class, 'upload'])->name('file.upload');
 Route::get('/file/download/{file}', [FileController::class, 'download'])->name('file.download');
+Route::delete('/student/file/{file}', [FileController::class, 'destroy'])->name('file.destroy');
 
 
 

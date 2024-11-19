@@ -97,7 +97,7 @@
                 <div class="file-upload-browse">
                     <label for="file" class="btn-browse">@lang('Browse')</label>
                 </div>
-                <input type="file" name="file" id="file" style="display: none;">
+                <input type="file" name="file" id="upload">
             </div>
             @if($errors->has('file'))
                 <div class="form-error-input">
@@ -118,7 +118,14 @@
         <div class="flex gap20">
             @foreach ($student->files as $file)
                 <div class="upload-doc">
-                    <div class="delete-doc"><i class="fa-solid fa-trash"></i></div>
+                    <div class="delete-doc">
+                        <form action="{{ route('file.destroy', ['file' => $file->id]) }}" method="POST" onsubmit="return confirm('@lang('Delete File')');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="" id="open-popup"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                    </div>
+                    
                     <div class="upload-bg">
                         <i class="fa-solid fa-file-pdf"></i>
                     </div>
@@ -126,7 +133,7 @@
                         {{ $file->title }}
                         <i class="fa-solid fa-download"></i>
                     </a>
-                        <span>@lang('Uploaded'): {{ $file->upload_date }}</span>
+                    <span>@lang('Uploaded'): {{ $file->upload_date }}</span>
                 </div>
             @endforeach
         </div>
@@ -144,23 +151,23 @@
 
             @if(Auth::check() && Auth::id() === $student->user_id)
             <div class="profile-links flex gap20 mt-20">
-                <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">Edit <i class="fa-solid fa-pen"></i></a>
+                <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">@lang('Edit') <i class="fa-solid fa-pen"></i></a>
                 <!-- Delete Button -->
                 
                 <form action="{{ route('article.destroy', ['article' => $article->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-icon danger" id="open-popup">Supprimer <i class="fa-solid fa-trash"></i></button>
+                    <button type="submit" class="btn btn-icon danger" id="open-popup">@lang('Delete') <i class="fa-solid fa-trash"></i></button>
                 </form>
-
-                
-        @endif
-        </div>
+            </div>
+            @endif
+            </div>
         @endforeach
+        
     </div>
 </section>
 
-</div>
+
 </div>   
 
 

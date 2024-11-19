@@ -48,4 +48,23 @@ class FileController extends Controller
             return redirect()->back()->withErrors("The requested file could not be found");
         }
     }
+
+    public function destroy(File $file) {
+        //Seules les utilisateurs authentifie peuvent effacer ce fichiers
+        if ($file->student->user_id !== auth()->id()) {
+            return redirect()->route('student.show', $file->student->id) 
+                ->withErrors('You are not authorized to delete this file.');
+        }
+
+        //Effacer depuis le stockage local
+        if (Storage::exists($file->file_path)) {
+            Storage::delete($file->file_path);
+        }
+
+        //effacer depuis la base de donnees
+        $file->delete();
+
+        return redirect()->route('student.show', $file->student->id)
+            ->with('success', 'File deleted successfully!');
+    }   
 }
