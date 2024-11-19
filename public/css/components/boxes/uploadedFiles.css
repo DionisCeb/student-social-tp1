@@ -1,0 +1,43 @@
+.upload-doc {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: aliceblue;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    color: var(--accent-color);
+}
+
+.upload-doc a, span {
+    color: var(--accent-color);
+}
+.upload-doc a {
+    font-size: 30px;
+}
+/*upload box background*/
+.upload-bg {
+    position: absolute;
+    font-size: 35px;
+    top: -20px;
+    left: 0px; 
+}
+
+/*delete btn*/
+.upload-doc .delete-doc {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 30px;
+}
+.upload-doc .delete-doc i {
+    color: rgb(166, 35, 35);
+    cursor: pointer;
+}
+
+.upload-doc i {
+    color: rgb(178, 75, 28);
+}

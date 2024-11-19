@@ -5,6 +5,7 @@ use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,13 @@ Route::post('/student/{student}/articles', [ArticleController::class, 'store'])-
 Route::get('/edit/student/articles/{article}', [ArticleController::class, 'edit'])->name('article.edit');
 Route::post('/edit/student/articles/{article}', [ArticleController::class, 'update'])->name('article.update');
 Route::delete('/student/articles/{article}', [ArticleController::class, 'destroy'])->name('article.destroy');
+
+/**
+ * File uploader
+ */
+Route::post('/student/{student}/upload', [FileController::class, 'upload'])->name('file.upload');
+Route::get('/file/download/{file}', [FileController::class, 'download'])->name('file.download');
+
 
 
 /**
