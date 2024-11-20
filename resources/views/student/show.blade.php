@@ -118,6 +118,10 @@
         <div class="flex gap20">
             @foreach ($student->files as $file)
                 <div class="upload-doc">
+                    
+                     @if (Auth::id() === $file->student->user_id)
+                        <div class="edit-doc"><a href="{{ route('file.edit', ['file' => $file->id]) }}"><i class="fa-solid fa-pen"></i></a></div>
+                    @endif
                     <div class="delete-doc">
                         <form action="{{ route('file.destroy', ['file' => $file->id]) }}" method="POST" onsubmit="return confirm('@lang('Delete File')');">
                             @csrf

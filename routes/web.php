@@ -48,6 +48,8 @@ Route::delete('/student/articles/{article}', [ArticleController::class, 'destroy
  */
 Route::post('/student/{student}/upload', [FileController::class, 'upload'])->name('file.upload');
 Route::get('/file/download/{file}', [FileController::class, 'download'])->name('file.download');
+Route::get('/student/file/{file}/edit', [FileController::class, 'edit'])->name('file.edit');
+Route::post('/student/file/{file}', [FileController::class, 'update'])->name('file.update');
 Route::delete('/student/file/{file}', [FileController::class, 'destroy'])->name('file.destroy');
 
 
