@@ -181,7 +181,7 @@
         </div>
     </div>
 </section>
-<section class="forum">
+<section class="forum" id="forum">
     <header class="page-title"><h1>Forum</h1></header>
     <div class="grid-container row-2">
         @foreach ($student->articles as $article)
@@ -199,13 +199,13 @@
                     <div class="article-date">@lang('Date'): {{ $article->publication_date }}</div>
                     <div class="article-author">@lang('Author'): {{ $article->student->user->name }}</div>
                 </div>
+                
             @else
                 <div class="article_en">
-                    <div class="article-title">@lang('No English translation available')</div>
+                    <div class="article-title">@lang('No translation available')</div>
                 </div>
             @endif
-            <button class="btn" id="change">@lang('Translate')</button>
-
+            
              <!-- French Article -->
             @if ($translation_fr)
                 <div class="article_fr hide">
@@ -216,9 +216,17 @@
                 </div>
             @else
                 <div class="article_fr hide">
-                    <div class="article-title">@lang('No French translation available')</div>
+                    <div class="article-title">@lang('No translation available')</div>
                 </div>
             @endif
+
+            <!-- Toggle Button -->
+            @if ($translation_fr)
+                <button class="btn" id="translateBtn">@lang('Translate')</button>
+            @else
+                <div class="article-title">@lang('No translation available')</div>
+            @endif
+            
 
             @if(Auth::check() && Auth::id() === $student->user_id)
                 <div class="profile-links flex gap20 mt-20">
@@ -240,6 +248,34 @@
 
 
 </div>   
+
+
+<script>
+   let forums = document.querySelectorAll('.forum-article');
+
+// Loop through all articles
+forums.forEach((forum) => {
+    let article_en = forum.querySelector('.article_en');
+    let article_fr = forum.querySelector('.article_fr');
+    let translateBtn = forum.querySelector('.btn');
+
+    // Function to toggle visibility
+    function toggleTranslation() {
+        if (article_fr.classList.contains('hide')) {
+            // Show French, hide English
+            article_fr.classList.remove('hide');
+            article_en.classList.add('hide');
+        } else {
+            // Show English, hide French
+            article_fr.classList.add('hide');
+            article_en.classList.remove('hide');
+        }
+    }
+
+    // Add event listener for each button
+    translateBtn.addEventListener('click', toggleTranslation);
+}); 
+</script>
 
 
 
