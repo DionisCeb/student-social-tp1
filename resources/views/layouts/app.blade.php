@@ -42,9 +42,12 @@
     @endauth
 
 
+
     <div class="dropdown">
         <!-- <button class="dropbtn btn">@lang('Language')</button> -->
         <img src="{{ asset('img/nav/language.png')}}" alt="language settings">
+        @php $locale = session()->get('locale') @endphp
+        {{$locale == '' ? '' : "($locale)"}}
         <div class="dropdown-box">
             <a href="{{ route('lang', 'en') }}">@lang('English')</a>
             <a href="{{ route('lang', 'fr') }}">@lang('French')</a>

@@ -43,16 +43,53 @@
 
                 @csrf
                 <div class="form-control">
-                    <label for="date">Title:</label>
-                    <input type="text" name="title">
+                    <label for="publication_date">Publication Date</label>
+                    <input type="date" name="publication_date" id="publication_date">
+                    @if($errors->has('publication_date'))
+                        <div class="form-error-input">
+                            {{ $errors->first('publication_date') }}
+                        </div>      
+                    @endif
+                </div>
+
+                <h2>English Translation</h2>
+                <div class="form-control">
+                    <label for="title_en">Title (EN)</label>
+                    <input type="text" name="title_en" id="title_en">
+                    @if($errors->has('title_en'))
+                        <div class="form-error-input">
+                            {{ $errors->first('title_en') }}
+                        </div>      
+                    @endif
                 </div>
                 <div class="form-control">
-                    <label for="date">Content:</label>
-                    <textarea name="content" id=""></textarea>
+                    <label for="content_en">Content (EN)</label>
+                    <textarea name="content_en" id="content_en"></textarea>
+                    @if($errors->has('content_en'))
+                        <div class="form-error-input">
+                            {{ $errors->first('content_en') }}
+                        </div>      
+                    @endif
+                </div>
+
+                <h2>French Translation</h2>
+                <div class="form-control">
+                    <label for="title_fr">Title (FR)</label>
+                    <input type="text" name="title_fr" id="title_fr">
+                    @if($errors->has('title_fr'))
+                        <div class="form-error-input">
+                            {{ $errors->first('title_fr') }}
+                        </div>      
+                    @endif
                 </div>
                 <div class="form-control">
-                    <label for="date">Date:</label>
-                    <input type="date" name="date" id="">
+                    <label for="content_fr">Content (FR)</label>
+                    <textarea name="content_fr" id="content_fr" class="form-control"></textarea>
+                    @if($errors->has('content_fr'))
+                        <div class="form-error-input">
+                            {{ $errors->first('content_fr') }}
+                        </div>      
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Create Article</button>     
             </form>
@@ -108,8 +145,9 @@
         <button type="submit" class="btn btn-primary">@lang('Upload File')</button>     
         </div>
     </form>
+    @endif
 </div>
-@endif
+
 </div>
 
 <section class="uploaded-files">
@@ -146,27 +184,36 @@
 <section class="forum">
     <header class="page-title"><h1>Forum</h1></header>
     <div class="grid-container row-2">
-        @foreach ($student->articles as $article)
+
+
         <div class="forum-article">
-            <div class="article-title">{{ $article->title }}</div>
-            <div class="article-description">{{ $article->content }}</div>
-            <div class="article-date">Date: {{ $article->publication_date }}</div>
-            <div class="article-author">Author: {{ $student->name }}</div>
+            <div class="article_en">
+                <div class="article-title"></div>
+                <div class="article-description"></div>
+                <div class="article-date">@lang('Date'): </div>
+                <div class="article-author">@lang('Author'): </div>
+            </div>
+            <button class="btn">@lang('Translate')</button>
+            <div class="article_fr hide">
+                <div class="article-title"></div>
+                <div class="article-description"></div>
+                <div class="article-date">@lang('Date'): </div>
+                <div class="article-author">@lang('Author'): </div>
+            </div>
 
             @if(Auth::check() && Auth::id() === $student->user_id)
-            <div class="profile-links flex gap20 mt-20">
-                <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="btn btn-icon">@lang('Edit') <i class="fa-solid fa-pen"></i></a>
-                <!-- Delete Button -->
-                
-                <form action="{{ route('article.destroy', ['article' => $article->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-icon danger" id="open-popup">@lang('Delete') <i class="fa-solid fa-trash"></i></button>
-                </form>
+                <div class="profile-links flex gap20 mt-20">
+                    <a href="" class="btn btn-icon">@lang('Edit') <i class="fa-solid fa-pen"></i></a>
+                    <!-- Delete Button -->
+                    
+                    <form action="" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-icon danger" id="open-popup">@lang('Delete') <i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </div>
+             @endif
             </div>
-            @endif
-            </div>
-        @endforeach
         
     </div>
 </section>
