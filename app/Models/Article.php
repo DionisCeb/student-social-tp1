@@ -20,4 +20,9 @@ class Article extends Model
     {
         return $this->translations()->where('language', $language)->first();
     }
+    public function student()
+    {
+    return $this->belongsTo(Student::class);
+    }
+
 }

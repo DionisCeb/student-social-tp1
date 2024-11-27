@@ -184,22 +184,41 @@
 <section class="forum">
     <header class="page-title"><h1>Forum</h1></header>
     <div class="grid-container row-2">
-
-
+        @foreach ($student->articles as $article)
+        
+        @php 
+            $translation_en = $article->translation('en');
+            $translation_fr = $article->translation('fr');
+        @endphp
         <div class="forum-article">
-            <div class="article_en">
-                <div class="article-title"></div>
-                <div class="article-description"></div>
-                <div class="article-date">@lang('Date'): </div>
-                <div class="article-author">@lang('Author'): </div>
-            </div>
-            <button class="btn">@lang('Translate')</button>
-            <div class="article_fr hide">
-                <div class="article-title"></div>
-                <div class="article-description"></div>
-                <div class="article-date">@lang('Date'): </div>
-                <div class="article-author">@lang('Author'): </div>
-            </div>
+            <!-- English Article -->
+            @if ($translation_en)
+                <div class="article_en">
+                    <div class="article-title">{{ $translation_en->title }}</div>
+                    <div class="article-description">{{ $translation_en->content }}</div>
+                    <div class="article-date">@lang('Date'): {{ $article->publication_date }}</div>
+                    <div class="article-author">@lang('Author'): {{ $article->student->user->name }}</div>
+                </div>
+            @else
+                <div class="article_en">
+                    <div class="article-title">@lang('No English translation available')</div>
+                </div>
+            @endif
+            <button class="btn" id="change">@lang('Translate')</button>
+
+             <!-- French Article -->
+            @if ($translation_fr)
+                <div class="article_fr hide">
+                    <div class="article-title">{{ $translation_fr->title }}</div>
+                    <div class="article-description">{{ $translation_fr->content }}</div>
+                    <div class="article-date">@lang('Date'): {{ $article->publication_date }}</div>
+                    <div class="article-author">@lang('Author'): {{ $article->student->user->name }}</div>
+                </div>
+            @else
+                <div class="article_fr hide">
+                    <div class="article-title">@lang('No French translation available')</div>
+                </div>
+            @endif
 
             @if(Auth::check() && Auth::id() === $student->user_id)
                 <div class="profile-links flex gap20 mt-20">
@@ -214,6 +233,7 @@
                 </div>
              @endif
             </div>
+        @endforeach
         
     </div>
 </section>
