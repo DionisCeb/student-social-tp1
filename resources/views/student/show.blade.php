@@ -230,10 +230,10 @@
 
             @if(Auth::check() && Auth::id() === $student->user_id)
                 <div class="profile-links flex gap20 mt-20">
-                    <a href="" class="btn btn-icon">@lang('Edit') <i class="fa-solid fa-pen"></i></a>
+                    <a href="{{ route('article.edit', $article->id) }}" class="btn btn-icon">@lang('Edit') <i class="fa-solid fa-pen"></i></a>
                     <!-- Delete Button -->
                     
-                    <form action="" method="POST">
+                    <form action="{{ route('article.destroy', $article->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon danger" id="open-popup">@lang('Delete') <i class="fa-solid fa-trash"></i></button>

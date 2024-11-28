@@ -108,6 +108,9 @@ class ArticleController extends Controller
                 ->withErrors('You are not authorized to delete this article.');
         }
 
+        // Delete the translations 
+        $article->translation()->delete();
+        
         // Delete the article
         $article->delete();
 
