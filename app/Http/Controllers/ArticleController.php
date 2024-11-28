@@ -54,7 +54,7 @@ class ArticleController extends Controller
          // Load translations for editing
          $translation_en = $article->translation('en');
          $translation_fr = $article->translation('fr');
-         
+
         return view('article.edit', compact('article', 'translation_en', 'translation_fr'));
     }
 
@@ -67,17 +67,34 @@ class ArticleController extends Controller
 
          //Validate the form data
          $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'date' => 'required|date',
+            'publication_date' => 'required|date',
+            'title_en' => 'required|string|max:255',
+            'content_en' => 'required|string',
+            'title_fr' => 'required|string|max:255',
+            'content_fr' => 'required|string',
          ]);
 
          //Update the article with validated data
          $article->update([
-            'title' => $validated['title'],
-            'content' => $validated['content'],
-            'date' => $validated['date'],
+            'publication_date' => $validated['publication_date'],
          ]);
+
+         // Update translations for English and French
+        $article->translations()->updateOrCreate(
+            ['language' => 'en'],
+            [
+                'title' => $validated['title_en'],
+                'content' => $validated['content_en'],
+            ]
+        );
+
+        $article->translations()->updateOrCreate(
+            ['language' => 'fr'],
+            [
+                'title' => $validated['title_fr'],
+                'content' => $validated['content_fr'],
+            ]
+        );
 
          return redirect()->route('student.show', $article->student->id)
             ->with('success', 'Article updated successfully!');
