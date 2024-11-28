@@ -50,7 +50,12 @@ class ArticleController extends Controller
             return redirect()->route('student.show', $article->student->id)
                 ->withErrors('You are not authorizd to edit this article.');
          }
-        return view('article.edit', compact('article'));
+
+         // Load translations for editing
+         $translation_en = $article->translation('en');
+         $translation_fr = $article->translation('fr');
+         
+        return view('article.edit', compact('article', 'translation_en', 'translation_fr'));
     }
 
     public function update(Request $request, Article $article) {
