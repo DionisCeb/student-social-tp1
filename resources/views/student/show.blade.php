@@ -31,11 +31,11 @@
     <div class="profile-body">
         <h2 class="profile-name">{{ $student->name }}</h2>
         <div class="profile-info">
-            <div><strong>Adresse:</strong> {{ $student->address }}</div>
-            <div><strong>Téléphone:</strong> {{ $student->phone }}</div>
-            <div><strong>Email:</strong> {{ $student->email }}</div>
-            <div><strong>Date de Naissance:</strong> {{ $student->birth_date }}</div>
-            <div><strong>Ville:</strong> {{ $student->city->name }}</div>
+            <div><strong>@lang('Address'):</strong> {{ $student->address }}</div>
+            <div><strong>@lang('Phone'):</strong> {{ $student->phone }}</div>
+            <div><strong>@lang('Email'):</strong> {{ $student->email }}</div>
+            <div><strong>@lang('Birth Date'):</strong> {{ $student->birth_date }}</div>
+            <div><strong>@lang('City'):</strong> {{ $student->city->name }}</div>
         </div>
         <div class="forum-container">
             @if(Auth::check() && Auth::id() === $student->user_id)
@@ -43,7 +43,7 @@
 
                 @csrf
                 <div class="form-control">
-                    <label for="publication_date">Publication Date</label>
+                    <label for="publication_date">@lang('Publication Date')</label>
                     <input type="date" name="publication_date" id="publication_date">
                     @if($errors->has('publication_date'))
                         <div class="form-error-input">
@@ -52,9 +52,8 @@
                     @endif
                 </div>
 
-                <h2>English Translation</h2>
                 <div class="form-control">
-                    <label for="title_en">Title (EN)</label>
+                    <label for="title_en">@lang('Title') (EN)</label>
                     <input type="text" name="title_en" id="title_en">
                     @if($errors->has('title_en'))
                         <div class="form-error-input">
@@ -63,7 +62,7 @@
                     @endif
                 </div>
                 <div class="form-control">
-                    <label for="content_en">Content (EN)</label>
+                    <label for="content_en">@lang('Content') (EN)</label>
                     <textarea name="content_en" id="content_en"></textarea>
                     @if($errors->has('content_en'))
                         <div class="form-error-input">
@@ -72,9 +71,8 @@
                     @endif
                 </div>
 
-                <h2>French Translation</h2>
                 <div class="form-control">
-                    <label for="title_fr">Title (FR)</label>
+                    <label for="title_fr">@lang('Title') (FR)</label>
                     <input type="text" name="title_fr" id="title_fr">
                     @if($errors->has('title_fr'))
                         <div class="form-error-input">
@@ -83,7 +81,7 @@
                     @endif
                 </div>
                 <div class="form-control">
-                    <label for="content_fr">Content (FR)</label>
+                    <label for="content_fr">@lang('Content') (FR)</label>
                     <textarea name="content_fr" id="content_fr" class="form-control"></textarea>
                     @if($errors->has('content_fr'))
                         <div class="form-error-input">
@@ -158,8 +156,8 @@
                 <div class="upload-doc">
                     
                      @if (Auth::id() === $file->student->user_id)
-                        <div class="edit-doc"><a href="{{ route('file.edit', ['file' => $file->id]) }}"><i class="fa-solid fa-pen"></i></a></div>
-                    @endif
+                    <div class="edit-doc"><a href="{{ route('file.edit', ['file' => $file->id]) }}"><i class="fa-solid fa-pen"></i></a></div>
+                   
                     <div class="delete-doc">
                         <form action="{{ route('file.destroy', ['file' => $file->id]) }}" method="POST" onsubmit="return confirm('@lang('Delete File')');">
                             @csrf
@@ -167,9 +165,10 @@
                             <button type="submit" class="" id="open-popup"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </div>
+                    @endif
                     
                     <div class="upload-bg">
-                        <i class="fa-solid fa-file-pdf"></i>
+                        <i class="fa-solid fa-file"></i>
                     </div>
                     <a href="{{ route('file.download', ['file' => $file->id]) }}" class="" download>
                         {{ $file->title }}
