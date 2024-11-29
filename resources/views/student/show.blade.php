@@ -153,7 +153,7 @@
         <header class="page-title"><h1>@lang('Uploaded Files')</h1></header>
         <article class="flex-col gap20">
 
-                <table class="table">
+                <table id="files-table" class="table">
                     <thead>
                         <tr>
                             <th>@lang('Title')</th>
@@ -200,7 +200,7 @@
                             </li>
                         @else
                             <li>
-                                <a href="{{ $files->previousPageUrl() }}" class="text-gray-700 hover:text-gray-900">&laquo; Previous</a>
+                                <a href="{{ $files->previousPageUrl() }}#files-table" class="text-gray-700 hover:text-gray-900">&laquo; Previous</a>
                             </li>
                         @endif
 
@@ -209,7 +209,7 @@
                             {{-- Skip "first" and "last" buttons --}}
                             @if (is_numeric($page))
                                 <li class="{{ $page == $files->currentPage() ? 'active' : '' }}">
-                                    <a href="{{ $url }}" class="py-1 px-3 text-gray-700 hover:text-gray-900 {{ $page == $files->currentPage() ? 'bg-blue-500 text-white' : '' }}">{{ $page }}</a>
+                                    <a href="{{ $url }}#files-table" class="py-1 px-3 text-gray-700 hover:text-gray-900 {{ $page == $files->currentPage() ? 'bg-blue-500 text-white' : '' }}">{{ $page }}</a>
                                 </li>
                             @endif
                         @endforeach
@@ -217,7 +217,7 @@
                         {{-- Next Page Link --}}
                         @if ($files->hasMorePages())
                             <li>
-                                <a href="{{ $files->nextPageUrl() }}" class="text-gray-700 hover:text-gray-900">Next &raquo;</a>
+                                <a href="{{ $files->nextPageUrl() }}#files-table" class="text-gray-700 hover:text-gray-900">Next &raquo;</a>
                             </li>
                         @else
                             <li class="disabled">
