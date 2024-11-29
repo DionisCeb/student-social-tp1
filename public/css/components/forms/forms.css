@@ -79,9 +79,10 @@
  }
 
  input#upload {
+    opacity: 0;
     cursor: pointer;
     padding: 20px;
     position: relative;
-    top: -15px;
-    left: 10%;
+    top: -35px;
+    left: 5%;
 }

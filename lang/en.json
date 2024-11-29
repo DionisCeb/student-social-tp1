@@ -11,6 +11,7 @@
     "Student List": "Student List",
     "Student Create": "Create Student",
     "Create Article": "Create Article",
+    
 
     "Address": "Address",
     "Phone": "Phone",
@@ -39,5 +40,7 @@
     "View": "View",
     "Download": "Download",
     "Don't have an account yet?": "Don't have an account yet?",
-    "Copyright": "Made in 2024, by Dionis"
+    "Copyright": "Made in 2024, by Dionis",
+    "Previous": "Previous",
+    "Next": "Next"
 }
