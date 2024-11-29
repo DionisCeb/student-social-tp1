@@ -89,7 +89,7 @@
                         </div>      
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary">Create Article</button>     
+                <button type="submit" class="btn btn-primary">@lang('Create Article')</button>     
             </form>
             
                 
@@ -151,33 +151,82 @@
 <section class="uploaded-files">
     <div class="uploaded-files-container">
         <header class="page-title"><h1>@lang('Uploaded Files')</h1></header>
-        <div class="flex gap20">
-            @foreach ($student->files as $file)
-                <div class="upload-doc">
-                    
-                     @if (Auth::id() === $file->student->user_id)
-                    <div class="edit-doc"><a href="{{ route('file.edit', ['file' => $file->id]) }}"><i class="fa-solid fa-pen"></i></a></div>
-                   
-                    <div class="delete-doc">
-                        <form action="{{ route('file.destroy', ['file' => $file->id]) }}" method="POST" onsubmit="return confirm('@lang('Delete File')');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="" id="open-popup"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                    </div>
-                    @endif
-                    
-                    <div class="upload-bg">
-                        <i class="fa-solid fa-file"></i>
-                    </div>
-                    <a href="{{ route('file.download', ['file' => $file->id]) }}" class="" download>
-                        {{ $file->title }}
-                        <i class="fa-solid fa-download"></i>
-                    </a>
-                    <span>@lang('Uploaded'): {{ $file->upload_date }}</span>
+        <article class="flex-col gap20">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>@lang('Title')</th>
+                            <th>@lang('Author')</th>
+                            <th>@lang('Date')</th>
+                            <th>@lang('Download')</th>
+                            <th>@lang('Edit')</th>
+                            <th>@lang('Delete')</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($files as $file)
+                            <tr>
+                                <td>{{ $file->title }}</td>
+                                <td>{{ $file->student->name }}</td>
+                                <td>{{ $file->upload_date }}</td>
+                                <td>
+                                    <a href="{{ route('file.download', ['file' => $file->id]) }}" class="" download>
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+                                </td>
+                                @if (Auth::id() === $file->student->user_id)
+                                    <td><a href="{{ route('file.edit', ['file' => $file->id]) }}"><i class="fa-solid fa-pen"></i></a></td>
+                                    <td>
+                                        <form action="{{ route('file.destroy', ['file' => $file->id]) }}" method="POST" onsubmit="return confirm('@lang('Delete File')');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="" id="open-popup"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <!-- Custom Pagination -->
+                <div class="pagination-container mt-4">
+                    <ul class="pagination flex justify-center">
+                        {{-- Previous Page Link --}}
+                        @if ($files->onFirstPage())
+                            <li class="disabled">
+                                <span>&laquo; Previous</span>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ $files->previousPageUrl() }}" class="text-gray-700 hover:text-gray-900">&laquo; Previous</a>
+                            </li>
+                        @endif
+
+                        {{-- Page Indexes --}}
+                        @foreach ($files->links()->elements[0] as $page => $url)
+                            {{-- Skip "first" and "last" buttons --}}
+                            @if (is_numeric($page))
+                                <li class="{{ $page == $files->currentPage() ? 'active' : '' }}">
+                                    <a href="{{ $url }}" class="py-1 px-3 text-gray-700 hover:text-gray-900 {{ $page == $files->currentPage() ? 'bg-blue-500 text-white' : '' }}">{{ $page }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+
+                        {{-- Next Page Link --}}
+                        @if ($files->hasMorePages())
+                            <li>
+                                <a href="{{ $files->nextPageUrl() }}" class="text-gray-700 hover:text-gray-900">Next &raquo;</a>
+                            </li>
+                        @else
+                            <li class="disabled">
+                                <span>Next &raquo;</span>
+                            </li>
+                        @endif
+                    </ul>
                 </div>
-            @endforeach
-        </div>
+        </article>
     </div>
 </section>
 <section class="forum" id="forum">

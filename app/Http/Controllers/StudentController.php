@@ -64,7 +64,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('student.show', ['student' => $student]);
+        $files = $student->files()->paginate(1);
+        return view('student.show', compact('student', 'files'));
     }
 
     /**

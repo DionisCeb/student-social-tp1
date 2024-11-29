@@ -10,11 +10,13 @@
     "Welcome": "Welcome",
     "Student List": "Student List",
     "Student Create": "Create Student",
+    "Create Article": "Create Article",
 
     "Address": "Address",
     "Phone": "Phone",
     "Email": "Email",
     "Name": "Name",
+    "Author": "Author",
     "Birth Date": "Birth Date",
     "City": "City",
     "Publication Date": "Publication Date",
@@ -35,6 +37,7 @@
     "Delete File": "Are you sure you want to delete this file?",
     "Translate": "Translate",
     "View": "View",
+    "Download": "Download",
     "Don't have an account yet?": "Don't have an account yet?",
     "Copyright": "Made in 2024, by Dionis"
 }

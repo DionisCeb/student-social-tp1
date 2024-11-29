@@ -59,10 +59,10 @@ Route::delete('/student/file/{file}', [FileController::class, 'destroy'])->name(
  * USER CREATE
  */
 
- Route::get('/users', [UserController::class, 'index'])->name('user.index');
+ Route::get('/users', [UserController::class, 'index'])->name('user.index')->middleware('auth');;
  Route::get('/registration', [UserController::class, 'create'])->name('user.create');
  Route::post('/registration', [UserController::class, 'store'])->name('user.store');
- Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+ Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 
 /**
  * Authentification
