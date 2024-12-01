@@ -38,6 +38,7 @@ Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name
 /**
  * Article creation
  */
+
 Route::post('/student/{student}/articles', [ArticleController::class, 'store'])->name('article.store');
 Route::get('/edit/student/articles/{article}', [ArticleController::class, 'edit'])->name('article.edit');
 Route::post('/edit/student/articles/{article}', [ArticleController::class, 'update'])->name('article.update');
@@ -48,6 +49,9 @@ Route::delete('/student/articles/{article}', [ArticleController::class, 'destroy
  */
 Route::post('/student/{student}/upload', [FileController::class, 'upload'])->name('file.upload');
 Route::get('/file/download/{file}', [FileController::class, 'download'])->name('file.download');
+Route::get('/student/file/{file}/edit', [FileController::class, 'edit'])->name('file.edit');
+Route::post('/student/file/{file}', [FileController::class, 'update'])->name('file.update');
+Route::delete('/student/file/{file}', [FileController::class, 'destroy'])->name('file.destroy');
 
 
 
@@ -55,10 +59,10 @@ Route::get('/file/download/{file}', [FileController::class, 'download'])->name('
  * USER CREATE
  */
 
- Route::get('/users', [UserController::class, 'index'])->name('user.index');
+ Route::get('/users', [UserController::class, 'index'])->name('user.index')->middleware('auth');;
  Route::get('/registration', [UserController::class, 'create'])->name('user.create');
  Route::post('/registration', [UserController::class, 'store'])->name('user.store');
- Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+ Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 
 /**
  * Authentification

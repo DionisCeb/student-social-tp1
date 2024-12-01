@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <header class="page-title"><h1>Liste des étudiants</h1></header>
+    <header class="page-title"><h1>@lang('Student List')</h1></header>
 
     <div class="grid-container">
             @forelse ($students as $student)
@@ -16,15 +16,15 @@
                         
                         <h5 class="card-title">{{ $student->name }}</h5>
                         <div class="card-text">
-                            <div><strong>Adresse:</strong> {{ $student->address }}</div>
-                            <div><strong>Téléphone:</strong> {{ $student->phone }}</div>
-                            <div><strong>Email:</strong> {{ $student->email }}</div>
-                            <div><strong>Date de Naissance:</strong> {{ $student->birth_date }}</div>
-                            <div><strong>Ville:</strong> {{ $student->city->name }}</div>
+                            <div><strong>@lang('Address'):</strong> {{ $student->address }}</div>
+                            <div><strong>@lang('Phone'):</strong> {{ $student->phone }}</div>
+                            <div><strong>@lang('Email'):</strong> {{ $student->email }}</div>
+                            <div><strong>@lang('Birth Date'):</strong> {{ $student->birth_date }}</div>
+                            <div><strong>@lang('City'):</strong> {{ $student->city->name }}</div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon">Voir <i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon">@lang('View') <i class="fa-solid fa-eye"></i></a>
                     </div>
                 </div>
             @empty

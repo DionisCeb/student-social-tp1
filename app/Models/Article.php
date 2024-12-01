@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title',
-        'content',
-        'publication_date',
-        'student_id',
-    ];
 
+    protected $fillable = ['student_id', 'publication_date'];
+
+    public function translations()
+    {
+        return $this->hasMany(ArticleTranslation::class);
+    }
+
+    public function translation($language = 'en')
+    {
+        return $this->translations()->where('language', $language)->first();
+    }
     public function student()
     {
-        return $this->belongsTo(Student::class);
+    return $this->belongsTo(Student::class);
     }
+
 }

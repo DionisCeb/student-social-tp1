@@ -4,24 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\ArticleTranslation;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+
     public function store(Request $request, Student $student)
     {
+        // Validate the input
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'date' => 'required|date',
+            'publication_date' => 'required|date',
+            'title_en' => 'required|string|max:255',
+            'content_en' => 'required|string',
+            'title_fr' => 'required|string|max:255',
+            'content_fr' => 'required|string',
         ]);
 
-        // Create the article associated with the student
-        $student->articles()->create([
-            'title' => $validated['title'],
-            'content' => $validated['content'],
-            'publication_date' => $validated['date'],
+        // Create the main article
+        $article = $student->articles()->create([
+            'publication_date' => $validated['publication_date'],
+        ]);
+
+        // Create translations for the article
+        $article->translations()->createMany([
+            [
+                'language' => 'en',
+                'title' => $validated['title_en'],
+                'content' => $validated['content_en'],
+            ],
+            [
+                'language' => 'fr',
+                'title' => $validated['title_fr'],
+                'content' => $validated['content_fr'],
+            ],
         ]);
 
         return redirect()->route('student.show', $student->id)->with('success', 'Article created successfully!');
@@ -33,7 +50,12 @@ class ArticleController extends Controller
             return redirect()->route('student.show', $article->student->id)
                 ->withErrors('You are not authorizd to edit this article.');
          }
-        return view('article.edit', compact('article'));
+
+         // Load translations for editing
+         $translation_en = $article->translation('en');
+         $translation_fr = $article->translation('fr');
+
+        return view('article.edit', compact('article', 'translation_en', 'translation_fr'));
     }
 
     public function update(Request $request, Article $article) {
@@ -45,17 +67,34 @@ class ArticleController extends Controller
 
          //Validate the form data
          $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'date' => 'required|date',
+            'publication_date' => 'required|date',
+            'title_en' => 'required|string|max:255',
+            'content_en' => 'required|string',
+            'title_fr' => 'required|string|max:255',
+            'content_fr' => 'required|string',
          ]);
 
          //Update the article with validated data
          $article->update([
-            'title' => $validated['title'],
-            'content' => $validated['content'],
-            'date' => $validated['date'],
+            'publication_date' => $validated['publication_date'],
          ]);
+
+         // Update translations for English and French
+        $article->translations()->updateOrCreate(
+            ['language' => 'en'],
+            [
+                'title' => $validated['title_en'],
+                'content' => $validated['content_en'],
+            ]
+        );
+
+        $article->translations()->updateOrCreate(
+            ['language' => 'fr'],
+            [
+                'title' => $validated['title_fr'],
+                'content' => $validated['content_fr'],
+            ]
+        );
 
          return redirect()->route('student.show', $article->student->id)
             ->with('success', 'Article updated successfully!');
@@ -69,6 +108,9 @@ class ArticleController extends Controller
                 ->withErrors('You are not authorized to delete this article.');
         }
 
+        // Delete the translations 
+        $article->translation()->delete();
+        
         // Delete the article
         $article->delete();
 

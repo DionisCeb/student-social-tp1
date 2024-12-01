@@ -98,6 +98,11 @@
     gap: 20px;
 }
 
+.forum-article .article_en >*,
+.forum-article .article_fr >* {
+   margin-bottom: 10px;
+}
+
 .article-title {
     font-size: 40px;
     font-weight: bold;
@@ -118,6 +123,10 @@
     border-radius: 20px;
     padding: 20px;
     width: 20%;
+}
+
+#translateBtn {
+    width: 50%;
 }
 
 /*responsive*/

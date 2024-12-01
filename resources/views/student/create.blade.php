@@ -8,7 +8,7 @@
         @csrf  
     
         <div class="form-control">
-            <label for="name">Nom:</label>
+            <label for="name">@lang('Name'):</label>
             <input type="text" placeholder="Entrez le nom de l'étudiant" name="name" value="{{ old('name') }}" required>
             @if($errors->has('name'))
                 <div class="form-error-input">
@@ -19,7 +19,7 @@
         
     
         <div class="form-control">
-            <label for="address">Adresse:</label>
+            <label for="address">@lang('Address'):</label>
             <input type="text" placeholder="Entrez l'adresse de l'étudiant" name="address" value="{{ old('address') }}" required>
             @if($errors->has('address'))
                 <div class="form-error-input">
@@ -29,7 +29,7 @@
         </div>
     
         <div class="form-control">
-            <label for="city">Ville:</label>
+            <label for="city">@lang('City'):</label>
             <select name="city_id" required>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
@@ -43,7 +43,7 @@
         </div>
     
         <div class="form-control">
-            <label for="birth_date">Date de naissance :</label>
+            <label for="birth_date">@lang('Birth Date') :</label>
             <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}" required> 
             @if($errors->has('birth_date'))
                 <div class="form-error-input">
@@ -54,7 +54,7 @@
         </div>
     
         <div class="form-control">
-            <label for="phone">Téléphone:</label>
+            <label for="phone">@lang('Phone'):</label>
             <input type="tel" placeholder="ex: 4222121233" name="phone" value="{{ old('phone') }}" required>
             @if($errors->has('phone'))
                 <div class="form-error-input">
@@ -64,7 +64,7 @@
         </div>
     
         <div class="form-control">
-            <label for="email">Email:</label>
+            <label for="email">@lang('Email')::</label>
             <input type="email" placeholder="ex: random@gmail.com" name="email" value="{{ old('email') }}" required>
             @if($errors->has('email'))
                 <div class="form-error-input">
@@ -73,7 +73,7 @@
             @endif
         </div>
     
-        <button type="submit" class="btn btn-primary">Create Student</button>
+        <button type="submit" class="btn btn-primary">@lang('Student Create')</button>
     </form>
 </div>
 @endsection

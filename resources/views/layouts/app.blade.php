@@ -42,9 +42,12 @@
     @endauth
 
 
+
     <div class="dropdown">
         <!-- <button class="dropbtn btn">@lang('Language')</button> -->
         <img src="{{ asset('img/nav/language.png')}}" alt="language settings">
+        @php $locale = session()->get('locale') @endphp
+        {{$locale == '' ? '' : "($locale)"}}
         <div class="dropdown-box">
             <a href="{{ route('lang', 'en') }}">@lang('English')</a>
             <a href="{{ route('lang', 'fr') }}">@lang('French')</a>
@@ -95,13 +98,13 @@
 
     <footer class="footer flex-col gap20">
             <div class="page-links">
-                <a class="nav-btn" href="{{ url('/') }}">Accueil</a>
+                <a class="nav-btn" href="{{ url('/') }}">@lang('Home')</a>
                 <span class="nav-btn">&middot;</span>
-                <a class="nav-btn" href="{{ route('student.index') }}">Liste des étudiants</a>
+                <a class="nav-btn" href="{{ route('student.index') }}">@lang('Student List')</a>
                 <span class="">&middot;</span>
-                <a class="nav-btn" href="{{ route('student.create') }}">Création d'étudiant</a>
+                <a class="nav-btn" href="{{ route('student.create') }}">@lang('Student Create')</a>
             </div>
-        <div class="copyright"><div class="small m-0">Copyright &copy; Réalisé en 2024, par Dionis</div></div>
+        <div class="copyright"><div class="small m-0">Copyright &copy; @lang('Copyright')</div></div>
     </footer>
 
 </body>
